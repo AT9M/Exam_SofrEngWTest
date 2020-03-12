@@ -55,7 +55,7 @@ public class TestEmployee {
         Exception e = assertThrows(IllegalArgumentException.class, new Executable() {
             @Override
             public void execute() throws Throwable {
-                Employee employee1 = new Employee("Mr","Eesffer","123456",1000001,"Full-Time",12);
+                Employee employee1 = new Employee("Miss","Eesffer","123456",1000001,"Full-Time",12);
             }
         });
         assertEquals("The employee must be over 18", e.getMessage());
@@ -68,10 +68,22 @@ public class TestEmployee {
         Exception e = assertThrows(IllegalArgumentException.class, new Executable() {
             @Override
             public void execute() throws Throwable {
-                Employee employee1 = new Employee("Mr","Engineer","1234565456",1000001,"Full-Time",35);
+                Employee employee1 = new Employee("Mrs","Engineer","1234565456",1000001,"Full-Time",35);
             }
         });
         assertEquals("Not a valid pps Number", e.getMessage());
+    }
+    @DisplayName("Test Wrong Title")
+    @Test
+    public void TestWTitle() {
+
+        Exception e = assertThrows(IllegalArgumentException.class, new Executable() {
+            @Override
+            public void execute() throws Throwable {
+                Employee employee1 = new Employee("Mrdfgfdgs","Engineer","123456",1000001,"Full-Time",35);
+            }
+        });
+        assertEquals("Invalid title", e.getMessage());
     }
 
     @DisplayName("Test getTitle")
@@ -110,4 +122,6 @@ public class TestEmployee {
         // employee = new Employee("Mr","Engineer",99999999,1000001,"Full-Time",35);
         assertEquals(35,employee.getAge() );
     }
+
+
 }
